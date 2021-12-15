@@ -30,7 +30,7 @@ def register(request):
                 return render('register')
             
             else:
-                user =  User.objects.create_user(first_name=first_name, last_name=last_name, email=email, username=username)
+                user =  User.objects.create_user(first_name=first_name, last_name=last_name, email=email,password=password, username=username)
                 user.save()
                 messages.success(request, 'User has been registered')
                 return redirect('login')
@@ -45,12 +45,17 @@ def user_login(request):
     if request.method=="POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
+        print("Signed in USER--------------- username",username)
+        print("Signed in USER--------------- password",password)
         user = authenticate(request, username=username, password=password)
+        print("Signed in USER--------------- ",user)
         if user is not None:   
             login(request, user)
+            print("Signed in Logged in--------------- ",user)
             return redirect('/')
             
         else:
+            print("This is the ERROR --------------- ",user)
             messages.warning(request,'Invalid credentials')
             return redirect('login')    
     return render(request,'login.html') 
