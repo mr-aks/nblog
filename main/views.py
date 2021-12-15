@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth.models import User,auth
-from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.models import User
+from django.contrib.auth import update_session_auth_hash,authenticate,login,logout
 from .models import Blog
 from django.contrib import messages
 from django.core.mail import send_mail
@@ -41,24 +41,23 @@ def register(request):
         return render(request, 'register.html')
 
 
-def login(request):
-    if request.method=='POST':
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        user = auth.authenticate(username=username, password=password)
-        print(user)
-        if user is not None:
-            auth.login(request, user)
-            return redirect('home')
+def user_login(request):
+    if request.method=="POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:   
+            login(request, user)
+            return redirect('/')
+            
         else:
-            messages.warning(request, 'username or password is incorrect')
-            return redirect('login')
-    else:
-        return render(request, 'login.html')    
+            messages.warning(request,'Invalid credentials')
+            return redirect('login')    
+    return render(request,'login.html') 
 
 
-def logout(request):
-    auth.logout(request)
+def user_logout(request):
+    logout(request)
     return redirect('home')
 
 
@@ -66,7 +65,7 @@ def details(request,id):
     blog = Blog.objects.get(id=id)
     return render(request, 'pagedetails.html', {'blog':blog})
 
-def post(request):
+def user_post(request):
     if request.method=='POST':
         tittle = request.POST.get('tittle')
         dsc = request.POST.get('dsc')
