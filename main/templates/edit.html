@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container mt-4" data-pg-collapsed>
+    <div class="row justify-content-center" data-pg-collapsed>
+        <div class="col-12 col-md-8 col-lg-7 col-md-5 text-center">
+            <div class="fdb-box fdb-touch">
+                <div class="row">
+                    <div class="col">
+                        <h1>Edit Your Post</h1>
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{form.as_p}}
+                    {% csrf_token %}
+                </div>
+                <div class="row mt-4">
+                    <div class="col">
+                        <button class="btn btn-primary" type="submit">Post</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

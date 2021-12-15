@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Blank Template for Bootstrap</title>
+        <!-- Bootstrap core CSS -->
+        {% load static %}
+
+        <link href="{% static 'bootstrap.css' %}" rel="stylesheet">
+        <!-- Custom styles for this template -->
+
+        <link href="style.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'froala_blocks.min.css' %}">
+        <link rel="stylesheet" href="https/releases/v5.13.1/css/all.css">
+    </head>
+    <body>
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <header>
+            <div class="container">
+                <nav class="navbar navbar-expand-md no-gutters">
+                    <div class="col-3 text-left">
+                        <a href=""> <img height="51" alt="image" width="120" src="{% static 'LogoMakr-3WuUh3.png'%}"> </a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse-2" aria-controls="navbarNav7" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse navbar-collapse-2 justify-content-center col-md-6" id="navbarNav7">
+                        <ul class="navbar-nav justify-content-center mt-2">
+                            {% if user.is_authenticated %}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">{{user.first_name}}<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active ">
+                                <a class="nav-link" href="post">Post</a>
+                            </li>
+                            <li class="nav-item active ">
+                                <a class="nav-link" href="logout">Logout</a>
+                            </li>
+                            {% else %}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-collapse-2">
+                        <ul class="navbar-nav ml-auto justify-content-end">
+                           
+
+                            <li class="nav-item active">
+                                <a class="nav-link" href="login">Log In</a>
+                            </li>
+                        </ul>
+                        <a class="btn btn-primary ml-md-3" href="register">Register</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+       
+    
+        <script src="{% static 'jquery.min.js' %}"></script>
+        <script src="{% static 'popper.js' %}"></script>
+        <script src="{% static 'bootstrap.min.js' %}"></script>
+    </body>
+    {% block content %}
+    {% endblock %}
+
+</html>

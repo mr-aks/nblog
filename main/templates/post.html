@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container mt-4" data-pg-collapsed>
+    <div class="row justify-content-center" data-pg-collapsed>
+        <div class="col-12 col-md-8 col-lg-7 col-md-5 text-center">
+            <div class="fdb-box fdb-touch">
+                <div class="row">
+                    <div class="col">
+                        <h1>Create a New Post</h1>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="form-group col mt-4">
+                                <label class="control-label row-sm-2">Tittle</label>
+                                <input name="tittle" type="text" class="form-control" placeholder="Tittle">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row mt-4">
+                            <div class="col">
+                                <label class="control-label row-sm-2">Description</label>
+                                <textarea class="form-control" name="dsc" placeholder="Description" ></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group"> 
+                            <label for="formFile200">Image</label>     
+                        
+                            <input type="file" class="form-control-file" name="img"> 
+                        </div>
+                        <div class="form-group">
+                            <div class="row mt-4">
+                                <div class="col">
+                                    <button class="btn btn-primary" type="submit">Post</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

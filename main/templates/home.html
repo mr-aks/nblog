@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+	<strong>!</strong> {{message}}
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	  <span aria-hidden="true">&times;</span>
+	</button>
+  </div>
+{% endfor %}
+
+        <section class="fdb-block" data-pg-collapsed>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6 text-center">
+                        <h1>Made By Smash</h1>
+                        <p class="lead">
+              Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts </p>                       
+                        {% if user.is_auhenticated %}
+                        <p class="mt-5 mt-sm-4"> <a href="post" class="btn btn-secondary" href="">Create New Post</a> </p>
+                        {% else %}
+                        <p class="mt-5 mt-sm-4"> <a href="login" class="btn btn-secondary" href="">Login Now</a> </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="fdb-block" data-pg-collapsed>
+            <div class="container">
+            
+                <div class="card-group" data-pg-collapsed>
+                    
+                    
+                    <div class="card">
+                        {% for b in blog %} 
+                        <img class="card-img-top" src="{{ b.Img.url }}" alt="Card image cap">
+                        <div class="mb-2 small">
+                            <a href="#" class="text-secondary"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" class="mr-1" data-pg-collapsed="false">
+                                    <path d="M4 22a8 8 0 1 1 16 0H4zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6z"></path>
+                                </svg>admin</a> | 
+                            <span>{{b.pdate}}</span>
+                        </div> 
+                        <div class="card-body"> 
+                            <h4 class="card-title">{{b.tittle}}</h4> 
+                            <p class="card-text">{{b.dsc}}</p> 
+                        </div>                 
+
+                        <div class="card-footer"> 
+                            <a class="btn btn-primary" href="/details/{{b.id}}">Continue Reading</a> 
+                        </div>
+                        {% endfor %}            
+                    </div>             
+
+                    
+                </div>         
+            </div>
+        </section>
+
+
+        <footer class="fdb-block footer-small bg-dark">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-8">
+                        <ul class="nav justify-content-center justify-content-md-start">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Features</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Terms</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">About</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-4 mt-4 mt-md-0 text-center text-md-right">
+                        © 2021 Travel. Made By SMASH
+                    </div>
+                </div>
+            </div>
+        </footer>
+{% endblock %}

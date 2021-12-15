@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+	<strong>!</strong> {{message}}
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	  <span aria-hidden="true">&times;</span>
+	</button>
+  </div>
+{% endfor %}
+
+<div class="container mt-4" data-pg-collapsed>
+    <div class="row justify-content-center" data-pg-collapsed>
+        <div class="col-12 col-md-8 col-lg-7 col-md-5 text-center">
+            <div class="fdb-box fdb-touch">
+                <div class="row">
+                    <div class="col">
+                        <h1>Login</h1>
+                    </div>
+                </div>
+                <form action="login" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col mt-4">
+                            <input name="username" type="username" class="form-control" placeholder="Username" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col">
+                            <input name="password" type="password" class="form-control" placeholder="Password" required>
+                            <p class="text-right"><a href="register">Need an account?</a></p>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col">
+                            <button class="btn btn-primary" type="submit">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

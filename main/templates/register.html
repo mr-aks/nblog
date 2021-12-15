@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+	<strong>!</strong> {{message}}
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	  <span aria-hidden="true">&times;</span>
+	</button>
+  </div>
+{% endfor %}
+
+<div class="container mt-4" data-pg-collapsed>
+    <div class="row justify-content-center" data-pg-collapsed>
+        <div class="col-12 col-md-8 col-lg-7 col-md-5 text-center">
+            <div class="fdb-box fdb-touch">
+                <div class="row">
+                    <div class="col">
+                        <h1>Register</h1>
+                    </div>
+                </div>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col mt-4">
+                            <input name="first_name" type="text" class="form-control" placeholder="First Name" required>
+                        </div>
+                        <div class="col row mt-4 mr-0">
+                            <input name="last_name" type="text" class="form-control" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col">
+                            <input name="email" type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col">
+                            <input name="username" id="username" type="username" class="form-control" placeholder="Username" required>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col">
+                            <input name="password" type="password" class="form-control mb-1" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col">
+                            <input name="password2" type="password" class="form-control mb-1" placeholder="Confirm Password" required>
+                            <p class="text-right"><a href="login">Already have an account?</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col">
+                            <button class="btn btn-primary" type="submit">Register</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock footer %}
