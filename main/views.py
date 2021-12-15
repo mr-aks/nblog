@@ -46,11 +46,14 @@ def user_login(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
+        print("Signed in USER--------------- ",user)
         if user is not None:   
             login(request, user)
+            print("Signed in Logged in--------------- ",user)
             return redirect('/')
             
         else:
+            print("This is the ERROR --------------- ",user)
             messages.warning(request,'Invalid credentials')
             return redirect('login')    
     return render(request,'login.html') 
